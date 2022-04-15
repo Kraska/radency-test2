@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { EditNote } from './EditNote.js';
 
 
 
@@ -12,7 +13,7 @@ export class NotesTableTr extends Component {
 
     render = () => {
         const { id, title, content } = this.item;
-        return (<tr key={id}>
+        return (<tr>
             <th></th>
             <th>{title}</th>
             <td></td>
@@ -20,13 +21,13 @@ export class NotesTableTr extends Component {
             <td>{content}</td>
             <td></td>
             <td>
-                <i class="bi bi-pencil-fill"></i>
+                <EditNote note={this.item} />
             </td>
             <td>
-                <i class="bi bi-arrow-down-square-fill"></i>
+                <i className="bi bi-arrow-down-square-fill"></i>
             </td>
             <td>
-                <i class="bi bi-trash-fill"></i>
+                <i className="bi bi-trash-fill"></i>
             </td>
         </tr>);
     }

@@ -12,7 +12,7 @@ export class NotesTable extends Component {
     }
 
     render = () => (
-        <div class="TableList container">
+        <div className="TableList container">
         <Table hover>
             <thead>
                 <tr>
@@ -23,12 +23,12 @@ export class NotesTable extends Component {
                     <th>Content</th>
                     <th>Dates</th>
                     <th></th>
-                    <th><i class="bi bi-arrow-down-square-fill"></i></th>
-                    <th><i class="bi bi-trash-fill"></i></th>
+                    <th><i className="bi bi-arrow-down-square-fill"></i></th>
+                    <th><i className="bi bi-trash-fill"></i></th>
                 </tr>
             </thead>
             <tbody>
-            {this.items.map((note) => (<NotesTableTr item={note}/>))}
+            {this.items.map((note) => (<NotesTableTr key={note.id} item={note}/>))}
             </tbody>
         </Table>
         </div>
