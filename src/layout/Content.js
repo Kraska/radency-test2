@@ -24,6 +24,6 @@ const NOTES = [
 
 
 export const Content = props => {
-    return (<div><NotesTable items={NOTES} /></div>);
+    return (<section><NotesTable items={NOTES} /></section>);
 };
 

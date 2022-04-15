@@ -19,9 +19,15 @@ export class NotesTableTr extends Component {
             <td></td>
             <td>{content}</td>
             <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                <i class="bi bi-pencil-fill"></i>
+            </td>
+            <td>
+                <i class="bi bi-arrow-down-square-fill"></i>
+            </td>
+            <td>
+                <i class="bi bi-trash-fill"></i>
+            </td>
         </tr>);
     }
 }

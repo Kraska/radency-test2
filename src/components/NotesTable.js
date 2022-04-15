@@ -12,7 +12,6 @@ export class NotesTable extends Component {
     }
 
     render = () => (
-        <section>
         <div class="TableList container">
         <Table hover>
             <thead>
@@ -24,8 +23,8 @@ export class NotesTable extends Component {
                     <th>Content</th>
                     <th>Dates</th>
                     <th></th>
-                    <th></th>
-                    <th></th>
+                    <th><i class="bi bi-arrow-down-square-fill"></i></th>
+                    <th><i class="bi bi-trash-fill"></i></th>
                 </tr>
             </thead>
             <tbody>
@@ -33,6 +32,5 @@ export class NotesTable extends Component {
             </tbody>
         </Table>
         </div>
-        </section>
     )
 }
