@@ -20,7 +20,14 @@ export const EditNote = ({ note, updateNote }) => {
 
         const handleSave = () => {
             updateNote(note.id, title, content);
+            handleClose();
         }
+
+        const handleKeyPress = ({ code }) => {
+            if (code === 'Enter') {
+                handleSave();
+            }
+          }
 
         return (
         <>
@@ -40,6 +47,7 @@ export const EditNote = ({ note, updateNote }) => {
                             type="text" 
                             value={title}
                             onChange={handleTitleChange}
+                            onKeyPress={handleKeyPress}
                             placeholder="Note title" />
                     </Form.Group>
                     <Form.Group className="mb-3">

@@ -2,9 +2,16 @@ import { NotesTable } from '../components/NotesTable.js';
 import { connect } from 'react-redux';
 import { updateNote, archiveNote, deleteNote } from '../actions/actionCreator.js';
 
-const Content = ({ notes, updateNote }) => {
+const Content = ({ notes, updateNote, archiveNote }) => {
   //console.log('notes', notes);
-    return (<section><NotesTable items={notes} updateItem={updateNote} /></section>);
+    const activeNotes = notes.filter(({isActive}) => isActive);
+    return (<section>
+        <NotesTable 
+            items={activeNotes} 
+            updateNote={updateNote} 
+            archiveNote={archiveNote}
+            />
+      </section>);
 };
 
 
