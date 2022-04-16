@@ -1,29 +1,14 @@
-import React from 'react';
 import { NotesTable } from '../components/NotesTable.js';
+import { connect } from 'react-redux';
+import { updateNote, archiveNote, deleteNote } from '../actions/actionCreator.js';
 
-const NOTES = [
-    {
-      id: 1,
-      title: 'Learn ReactJS',
-      content: '',
-      isActive: true,
-    },
-    {
-      id: 2,
-      title: 'Learn Redux',
-      content: '',
-      isActive: true,
-    },
-    {
-      id: 3,
-      title: 'Learn React Router',
-      content: '',
-      isActive: true,
-    }
-];
-
-
-export const Content = props => {
-    return (<section><NotesTable items={NOTES} /></section>);
+const Content = ({ notes, updateNote }) => {
+  //console.log('notes', notes);
+    return (<section><NotesTable items={notes} updateItem={updateNote} /></section>);
 };
+
+
+export default connect(state => ({
+  notes: state.notes,
+}), { updateNote, archiveNote, deleteNote })(Content);
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Content } from './layout/Content.js';
+import Content from './layout/Content.js';
 
 function App() {
   return (

@@ -1,17 +1,10 @@
-import React, { Component } from 'react';
 import { NotesTableTr } from './NotesTableTr.js';
 import { Table } from 'react-bootstrap';
 import './NotesTable.css';
 
-export class NotesTable extends Component {
+export const NotesTable = ({ items, updateItem }) => {
 
-    constructor({ items }) {
-        super();
-
-        this.items = items;
-    }
-
-    render = () => (
+    return (
         <div className="TableList container">
         <Table hover>
             <thead>
@@ -28,9 +21,9 @@ export class NotesTable extends Component {
                 </tr>
             </thead>
             <tbody>
-            {this.items.map((note) => (<NotesTableTr key={note.id} item={note}/>))}
+            {items.map((note) => (<NotesTableTr key={note.id} item={note} updateItem={updateItem} />))}
             </tbody>
         </Table>
         </div>
-    )
+    );       
 }

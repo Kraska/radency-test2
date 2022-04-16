@@ -2,11 +2,25 @@ import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 
 
-export const EditNote = ({ note }) => {
+export const EditNote = ({ note, updateNote }) => {
         const [show, setShow] = useState(false);
 
         const handleClose = () => setShow(false);
         const handleShow = () => setShow(true);
+
+        const [title, setTitle] = useState(note.title);
+        const handleTitleChange = ({ target: { value } }) => {
+            setTitle(value);
+        }
+
+        const [content, setContent] = useState(note.content);
+        const handleContentChange = ({ target: { value } }) => {
+            setContent(value);
+        }
+
+        const handleSave = () => {
+            updateNote(note.id, title, content);
+        }
 
         return (
         <>
@@ -24,7 +38,8 @@ export const EditNote = ({ note }) => {
                         <Form.Label>Title</Form.Label>
                         <Form.Control 
                             type="text" 
-                            defaultValue={note.title}
+                            value={title}
+                            onChange={handleTitleChange}
                             placeholder="Note title" />
                     </Form.Group>
                     <Form.Group className="mb-3">
@@ -39,7 +54,8 @@ export const EditNote = ({ note }) => {
                         <Form.Label>Content</Form.Label>
                         <Form.Control 
                             as="textarea" 
-                            defaultValue={note.content}
+                            value={content}
+                            onChange={handleContentChange}
                             rows={3} />
                     </Form.Group>
 
@@ -48,7 +64,7 @@ export const EditNote = ({ note }) => {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={handleSave}>
                         Save
                     </Button>
                 </Modal.Footer>
