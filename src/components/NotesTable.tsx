@@ -1,8 +1,16 @@
-import { NotesTableTr } from './NotesTableTr.js';
+import { NotesTableTr } from './NotesTableTr';
 import { Table } from 'react-bootstrap';
 import './NotesTable.css';
+import { INote } from '../types.js';
 
-export const NotesTable = ({ notes, updateNote, archiveNote }) => {
+
+type NoteTableProps = {
+    notes: Array<INote>,
+    updateNote: any,
+    archiveNote: any,
+}
+
+export const NotesTable = ({ notes, updateNote, archiveNote }: NoteTableProps) => {
 
     return (
         <div className="TableList container">
@@ -24,7 +32,7 @@ export const NotesTable = ({ notes, updateNote, archiveNote }) => {
             {notes.map((note) => (
                 <NotesTableTr 
                     key={note.id} 
-                    item={note} 
+                    note={note} 
                     updateNote={updateNote} 
                     archiveNote={archiveNote} 
                     />))}

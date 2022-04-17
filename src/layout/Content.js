@@ -1,4 +1,4 @@
-import { NotesTable } from '../components/NotesTable.js';
+import { NotesTable } from '../components/NotesTable';
 import { connect } from 'react-redux';
 import { updateNote, archiveNote, deleteNote } from '../actions/actionCreator.ts';
 

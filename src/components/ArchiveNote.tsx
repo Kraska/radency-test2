@@ -1,8 +1,14 @@
 import { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
+import { INote } from '../types.js';
 
 
-export const ArchiveNote = ({ note, archiveNote }) => {
+type ArchiveNoteProps = {
+    note: INote,
+    archiveNote: any,
+}
+
+export const ArchiveNote = ({ note, archiveNote }: ArchiveNoteProps) => {
         const [show, setShow] = useState(false);
 
         const handleClose = () => setShow(false);

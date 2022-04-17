@@ -1,20 +1,26 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
+import { INote } from '../types.js';
 
 
-export const EditNote = ({ note, updateNote }) => {
+type ArchiveNoteProps = {
+    note: INote,
+    updateNote: any,
+}
+
+export const EditNote = ({ note, updateNote }: ArchiveNoteProps) => {
         const [show, setShow] = useState(false);
 
         const handleClose = () => setShow(false);
         const handleShow = () => setShow(true);
 
         const [title, setTitle] = useState(note.title);
-        const handleTitleChange = ({ target: { value } }) => {
+        const handleTitleChange = ({ target: { value } }: ChangeEvent<HTMLInputElement>) => {
             setTitle(value);
         }
 
         const [content, setContent] = useState(note.content);
-        const handleContentChange = ({ target: { value } }) => {
+        const handleContentChange = ({ target: { value } }: ChangeEvent<HTMLTextAreaElement>) => {
             setContent(value);
         }
 
@@ -22,12 +28,12 @@ export const EditNote = ({ note, updateNote }) => {
             updateNote({...note, title, content});
             handleClose();
         }
-
-        const handleKeyPress = ({ code }) => {
+        
+        const handleKeyPress = ({ code }: KeyboardEvent<HTMLInputElement>) => {
             if (code === 'Enter') {
                 handleSave();
             }
-          }
+        }
 
         return (
         <>
