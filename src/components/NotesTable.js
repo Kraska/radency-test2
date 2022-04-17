@@ -2,7 +2,7 @@ import { NotesTableTr } from './NotesTableTr.js';
 import { Table } from 'react-bootstrap';
 import './NotesTable.css';
 
-export const NotesTable = ({ items, updateNote, archiveNote }) => {
+export const NotesTable = ({ notes, updateNote, archiveNote }) => {
 
     return (
         <div className="TableList container">
@@ -21,7 +21,7 @@ export const NotesTable = ({ items, updateNote, archiveNote }) => {
                 </tr>
             </thead>
             <tbody>
-            {items.map((note) => (
+            {notes.map((note) => (
                 <NotesTableTr 
                     key={note.id} 
                     item={note} 

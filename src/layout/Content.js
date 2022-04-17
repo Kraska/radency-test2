@@ -7,7 +7,7 @@ const Content = ({ notes, updateNote, archiveNote }) => {
     const activeNotes = notes.filter(({isActive}) => isActive);
     return (<section>
         <NotesTable 
-            items={activeNotes} 
+            notes={activeNotes} 
             updateNote={updateNote} 
             archiveNote={archiveNote}
             />
