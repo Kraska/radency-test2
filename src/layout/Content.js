@@ -1,6 +1,6 @@
 import { NotesTable } from '../components/NotesTable.js';
 import { connect } from 'react-redux';
-import { updateNote, archiveNote, deleteNote } from '../actions/actionCreator.js';
+import { updateNote, archiveNote, deleteNote } from '../actions/actionCreator.ts';
 
 const Content = ({ notes, updateNote, archiveNote }) => {
   //console.log('notes', notes);

@@ -21,15 +21,20 @@ const NOTES = [
     }
 ];
 
-const notes = (state = NOTES, { id, title, content, isActive, type }) => {
-  //console.log('id, title', id, title);
+const notes = (state = NOTES, { type, payload } ) => {
+
+  //console.log('payload', payload);
     switch (type) {
       
-        case UPDATE_NOTE :
+        case UPDATE_NOTE : {
+          const { id, title, content, isActive } = payload;
           return state.map(note => note.id === id ? {id, title, content, isActive} : note);
+        }
   
-        case ARCHIVE_NOTE :
+        case ARCHIVE_NOTE : {
+          const { id } = payload;
           return state.map(note => note.id === id ? {...note, isActive: false} : note);
+        }
       
         default:
           return state;

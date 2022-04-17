@@ -3,7 +3,7 @@ import { EditNote } from './EditNote.js';
 
 
 
-export const NotesTableTr = ({ item, updateItem, archiveNote }) => {
+export const NotesTableTr = ({ item, updateNote, archiveNote }) => {
     const { id, title, content } = item;
     return (<tr>
         <th></th>
@@ -13,7 +13,7 @@ export const NotesTableTr = ({ item, updateItem, archiveNote }) => {
         <td>{content}</td>
         <td></td>
         <td>
-            <EditNote note={item} updateNote={updateItem} />
+            <EditNote note={item} updateNote={updateNote} />
         </td>
         <td>
             <ArchiveNote note={item} archiveNote={archiveNote} />

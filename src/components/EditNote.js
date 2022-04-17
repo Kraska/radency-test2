@@ -19,7 +19,7 @@ export const EditNote = ({ note, updateNote }) => {
         }
 
         const handleSave = () => {
-            updateNote(note.id, title, content);
+            updateNote({...note, title, content});
             handleClose();
         }
 
