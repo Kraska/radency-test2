@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import { INote } from '../types.js';
+import { INote, NoteActionTypes } from '../types.js';
 
 
 type ArchiveNoteProps = {
     note: INote,
-    archiveNote: any,
+    archiveNote: (id:number) => NoteActionTypes,
 }
 
 export const ArchiveNote = ({ note, archiveNote }: ArchiveNoteProps) => {

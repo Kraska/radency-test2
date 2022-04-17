@@ -1,13 +1,13 @@
 import { NotesTableTr } from './NotesTableTr';
 import { Table } from 'react-bootstrap';
 import './NotesTable.css';
-import { INote } from '../types.js';
+import { INote, NoteActionTypes } from '../types.js';
 
 
 type NoteTableProps = {
     notes: Array<INote>,
-    updateNote: any,
-    archiveNote: any,
+    updateNote: (note:INote) => NoteActionTypes,
+    archiveNote: (id:number) => NoteActionTypes,
 }
 
 export const NotesTable = ({ notes, updateNote, archiveNote }: NoteTableProps) => {

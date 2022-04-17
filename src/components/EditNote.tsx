@@ -1,11 +1,11 @@
 import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
-import { INote } from '../types.js';
+import { INote, NoteActionTypes } from '../types.js';
 
 
 type ArchiveNoteProps = {
     note: INote,
-    updateNote: any,
+    updateNote: (note:INote) => NoteActionTypes,
 }
 
 export const EditNote = ({ note, updateNote }: ArchiveNoteProps) => {

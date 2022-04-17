@@ -1,12 +1,12 @@
 import { ArchiveNote } from './ArchiveNote';
 import { EditNote } from './EditNote';
-import { INote } from '../types.js';
+import { INote, NoteActionTypes } from '../types.js';
 
 
 type NoteTableTrProps = {
     note: INote,
-    updateNote: any,
-    archiveNote: any,
+    updateNote: (note:INote) => NoteActionTypes,
+    archiveNote: (id:number) => NoteActionTypes,
 }
 
 export const NotesTableTr = ({ note, updateNote, archiveNote }: NoteTableTrProps) => {
