@@ -19,6 +19,7 @@ interface IUpdateNoteAction {
         id: number,
         title: string,
         content: string,
+        isActive: boolean,
     },
 }
 

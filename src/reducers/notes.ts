@@ -1,4 +1,7 @@
 import { ARCHIVE_NOTE, UPDATE_NOTE } from "../constants";
+import { INote, NoteActionTypes } from "../types";
+
+type stateNotes = INote[];
 
 const NOTES = [
     {
@@ -21,14 +24,24 @@ const NOTES = [
     }
 ];
 
-const notes = (state = NOTES, { type, payload } ) => {
+const initialState:stateNotes = NOTES;
 
+const notes = (state = initialState, action:NoteActionTypes ): stateNotes => {
+
+  const { type, payload } = action;
   //console.log('payload', payload);
     switch (type) {
       
         case UPDATE_NOTE : {
-          const { id, title, content, isActive } = payload;
-          return state.map(note => note.id === id ? {id, title, content, isActive} : note);
+          
+          const note:INote = {
+            id: payload.id, 
+            title: payload.title, 
+            content: payload.content, 
+            isActive: payload.isActive,
+          };
+
+          return state.map(item => item.id === payload.id ? note : item);
         }
   
         case ARCHIVE_NOTE : {
