@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Modal, Button, Form } from 'react-bootstrap';
+import { useState } from 'react';
+import { Modal, Button } from 'react-bootstrap';
 
 
 export const ArchiveNote = ({ note, archiveNote }) => {
