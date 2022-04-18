@@ -1,17 +1,18 @@
 import { ArchiveNote } from './ArchiveNote';
 import { EditNote } from './EditNote';
-import { INote, NoteActionTypes } from '../types.js';
+import { INote, ICategory, NoteActionTypes } from '../types.js';
 import { DeleteNote } from './DeleteNote';
 
 
 type NoteTableTrProps = {
     note: INote,
+    categories: Record<string, ICategory>,
     updateNote: (note:INote) => NoteActionTypes,
     archiveNote: (id:number) => NoteActionTypes,
     deleteNote: (id:number) => NoteActionTypes,
 }
 
-export const NotesTableTr = ({ note, updateNote, archiveNote, deleteNote }: NoteTableTrProps) => {
+export const NotesTableTr = ({ note, categories, updateNote, archiveNote, deleteNote }: NoteTableTrProps) => {
     const { title, created, category, content, dates } = note;
     return (<tr>
         <th></th>
@@ -21,7 +22,7 @@ export const NotesTableTr = ({ note, updateNote, archiveNote, deleteNote }: Note
         <td>{content}</td>
         <td>{dates}</td>
         <td>
-            <EditNote note={note} updateNote={updateNote} />
+            <EditNote note={note} categories={categories} updateNote={updateNote} />
         </td>
         <td>
             <ArchiveNote note={note} archiveNote={archiveNote} />

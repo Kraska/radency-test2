@@ -1,14 +1,17 @@
+import { getByTitle } from '@testing-library/react';
 import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
-import { INote, NoteActionTypes } from '../types.js';
+import { ICategory, INote, NoteActionTypes } from '../types.js';
 
 
 type ArchiveNoteProps = {
     note: INote,
+    categories: Record<string, ICategory>,
     updateNote: (note:INote) => NoteActionTypes,
 }
 
-export const EditNote = ({ note, updateNote }: ArchiveNoteProps) => {
+export const EditNote = ({ note, categories, updateNote }: ArchiveNoteProps) => {
+
         const [show, setShow] = useState(false);
 
         const handleClose = () => setShow(false);
@@ -19,13 +22,18 @@ export const EditNote = ({ note, updateNote }: ArchiveNoteProps) => {
             setTitle(value);
         }
 
+        const [categoryId, setCategory] = useState(note.category.id);
+        const handleCategoryChange = ({ target: { value } }: ChangeEvent<HTMLSelectElement>) => {
+            setCategory(value);
+        }
+
         const [content, setContent] = useState(note.content);
         const handleContentChange = ({ target: { value } }: ChangeEvent<HTMLTextAreaElement>) => {
             setContent(value);
         }
 
         const handleSave = () => {
-            updateNote({...note, title, content});
+            updateNote({...note, title, category: categories[categoryId], content});
             handleClose();
         }
         
@@ -58,10 +66,11 @@ export const EditNote = ({ note, updateNote }: ArchiveNoteProps) => {
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>Category</Form.Label>
-                        <Form.Select>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                        <Form.Select 
+                            value={categoryId}
+                            onChange={handleCategoryChange} >
+                            {Object.values(categories)
+                                .map(({id, title}) => (<option key={id} value={id}>{title}</option>))}
                         </Form.Select>
                     </Form.Group>
                     <Form.Group className="mb-3">

@@ -1,17 +1,18 @@
 import { NotesTableTr } from './NotesTableTr';
 import { Table } from 'react-bootstrap';
 import './NotesTable.css';
-import { INote, NoteActionTypes } from '../types.js';
+import { INote, ICategory, NoteActionTypes } from '../types.js';
 
 
 type NoteTableProps = {
     notes: Array<INote>,
+    categories: Record<string, ICategory>,
     updateNote: (note:INote) => NoteActionTypes,
     archiveNote: (id:number) => NoteActionTypes,
     deleteNote: (id:number) => NoteActionTypes,
 }
 
-export const NotesTable = ({ notes, updateNote, archiveNote, deleteNote }: NoteTableProps) => {
+export const NotesTable = ({ notes, categories, updateNote, archiveNote, deleteNote }: NoteTableProps) => {
 
     return (
         <div className="TableList container">
@@ -34,6 +35,7 @@ export const NotesTable = ({ notes, updateNote, archiveNote, deleteNote }: NoteT
                 <NotesTableTr 
                     key={note.id} 
                     note={note} 
+                    categories={categories}
                     updateNote={updateNote} 
                     archiveNote={archiveNote} 
                     deleteNote={deleteNote} 

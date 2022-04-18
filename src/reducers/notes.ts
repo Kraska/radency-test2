@@ -1,75 +1,8 @@
 import { ARCHIVE_NOTE, DELETE_NOTE, UPDATE_NOTE } from "../constants";
 import { INote, NoteActionTypes } from "../types";
+import { NOTES, CATEGORIES } from "./init-data";
 
 type stateNotes = INote[];
-
-const CATEGORIES = {
-  1: {
-    id: 1,
-    title: 'Task',
-    iconName: 'bi-card-list',
-    activeNotes: 3,
-    archivedNotes: 0,
-  },
-  2: {
-    id: 2,
-    title: 'Random Thought',
-    iconName: 'bi-shuffle',
-    activeNotes: 1,
-    archivedNotes: 0,
-  },
-  3: {
-    id: 3,
-    title: 'Idea',
-    iconName: 'bi-lightbulb',
-    activeNotes: 1,
-    archivedNotes: 0,
-  },
-}; 
-
-
-const NOTES: INote[] = [
-    {
-      id: 1,
-      title: 'Shopping list',
-      created: new Date(),
-      category: CATEGORIES[1],
-      content: 'Tomatoes, bread, ...',
-      isActive: true,
-    },
-    {
-      id: 2,
-      title: 'The theory of evolution',
-      created: new Date(),
-      category: CATEGORIES[2],
-      content: '',
-      isActive: true,
-    },
-    {
-      id: 3,
-      title: 'Books list',
-      created: new Date(),
-      category: CATEGORIES[1],
-      content: '',
-      isActive: true,
-    },
-    {
-      id: 4,
-      title: 'New Future',
-      created: new Date(),
-      category: CATEGORIES[3],
-      content: '',
-      isActive: true,
-    },
-    {
-      id: 5,
-      title: 'Some Task',
-      created: new Date(),
-      category: CATEGORIES[1],
-      content: 'some content',
-      isActive: true,
-    },
-];
 
 const initialState:stateNotes = NOTES;
 
@@ -77,7 +10,7 @@ const EMPTY_NOTE:INote = {
   id: 0,
   title: '',
   created: new Date(),
-  category: CATEGORIES[1],
+  category: CATEGORIES['1'],
   content: '',
   isActive: false,
 };

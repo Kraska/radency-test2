@@ -1,4 +1,4 @@
-import { ADD_NOTE, ARCHIVE_NOTE, UPDATE_NOTE, DELETE_NOTE } from "./constants";
+import { ADD_NOTE, ARCHIVE_NOTE, UPDATE_NOTE, DELETE_NOTE, UPDATE_CATEGORY } from "./constants";
 
 
 // Store
@@ -15,7 +15,7 @@ export interface INote {
 }
 
 export interface ICategory {
-    id: number,
+    id: string,
     title: string,
     iconName: string,
     activeNotes: number,
@@ -53,3 +53,14 @@ interface IDeleteNoteAction {
 }
 
 export type NoteActionTypes = IUpdateNoteAction | IArchiveNoteAction | IDeleteNoteAction;
+
+
+
+interface IUpdateCategory {
+    type: typeof UPDATE_CATEGORY,
+    payload: {
+        id: string,
+    },
+}
+
+export type CategoryActionTypes = IUpdateCategory;
