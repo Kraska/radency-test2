@@ -1,6 +1,5 @@
 import { NotesTableTr } from './NotesTableTr';
 import { Table } from 'react-bootstrap';
-import './NotesTable.css';
 import { INote, ICategory, NoteActionTypes } from '../types.js';
 import { AddNote } from './AddNote';
 

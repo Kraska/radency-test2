@@ -1,3 +1,44 @@
 div.container {
   margin-top: 20px;
 }
+
+.TableList thead th {
+  background-color: #999999;
+  color: white;
+}
+
+.TableList tbody tr {
+  background-color: #E8EAF4;
+  border-color: white;
+  border-width: 6px;
+  color: dimgray;
+}
+
+.TableList tbody th {
+  font-weight: normal;
+  color: #212529;
+}
+
+.TableList .icon-coll {
+  color: dimgray;
+  padding-left: 15px;
+  width: 50px;
+}
+
+.TableList tbody td i {
+  color: grey;
+}
+
+button.btn {
+  background-color: #999999;
+  color: white;
+  font-weight: bold;
+}
+
+button.btn:hover {
+  color: white;
+}
+
+.Summary {
+  padding-top: 150px;
+}

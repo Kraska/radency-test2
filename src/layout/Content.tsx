@@ -2,6 +2,7 @@ import { NotesTable } from '../components/NotesTable';
 import { connect } from 'react-redux';
 import { addNote, updateNote, archiveNote, deleteNote } from '../actions/actionCreator';
 import { ICategory, INote, NoteActionTypes } from '../types';
+import { SummaryTable } from '../components/SummaryTable';
 
 
 type ContentProps = {
@@ -22,6 +23,7 @@ const Content = ({ notes, categories, addNote, updateNote, archiveNote, deleteNo
   
     const activeNotes = notes.filter(({isActive}) => isActive);
     return (<section>
+
         <NotesTable 
             notes={activeNotes} 
             categories={categories}
@@ -30,6 +32,9 @@ const Content = ({ notes, categories, addNote, updateNote, archiveNote, deleteNo
             archiveNote={archiveNote}
             deleteNote={deleteNote}
             />
+
+          <SummaryTable categories={categories} />
+          
       </section>);
 };
 
