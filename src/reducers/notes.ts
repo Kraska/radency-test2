@@ -1,4 +1,4 @@
-import { ARCHIVE_NOTE, UPDATE_NOTE } from "../constants";
+import { ARCHIVE_NOTE, DELETE_NOTE, UPDATE_NOTE } from "../constants";
 import { INote, NoteActionTypes } from "../types";
 
 type stateNotes = INote[];
@@ -108,6 +108,11 @@ const notes = (state = initialState, action:NoteActionTypes ): stateNotes => {
       case ARCHIVE_NOTE : {
         const { id } = payload;
         return state.map(note => note.id === id ? {...note, isActive: false} : note);
+      }
+
+      case DELETE_NOTE : {
+        const { id } = payload;
+        return state.filter(note => note.id !== id);
       }
     
       default:

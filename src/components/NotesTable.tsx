@@ -8,9 +8,10 @@ type NoteTableProps = {
     notes: Array<INote>,
     updateNote: (note:INote) => NoteActionTypes,
     archiveNote: (id:number) => NoteActionTypes,
+    deleteNote: (id:number) => NoteActionTypes,
 }
 
-export const NotesTable = ({ notes, updateNote, archiveNote }: NoteTableProps) => {
+export const NotesTable = ({ notes, updateNote, archiveNote, deleteNote }: NoteTableProps) => {
 
     return (
         <div className="TableList container">
@@ -35,6 +36,7 @@ export const NotesTable = ({ notes, updateNote, archiveNote }: NoteTableProps) =
                     note={note} 
                     updateNote={updateNote} 
                     archiveNote={archiveNote} 
+                    deleteNote={deleteNote} 
                     />))}
             </tbody>
         </Table>

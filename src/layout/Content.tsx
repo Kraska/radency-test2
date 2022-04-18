@@ -8,9 +8,10 @@ type ContentProps = {
   notes: Array<INote>,
   updateNote: (note:INote) => NoteActionTypes,
   archiveNote: (id:number) => NoteActionTypes,
+  deleteNote: (id:number) => NoteActionTypes,
 };
 
-const Content = ({ notes, updateNote, archiveNote }: ContentProps) => {
+const Content = ({ notes, updateNote, archiveNote, deleteNote }: ContentProps) => {
   
     const activeNotes = notes.filter(({isActive}) => isActive);
     return (<section>
@@ -18,6 +19,7 @@ const Content = ({ notes, updateNote, archiveNote }: ContentProps) => {
             notes={activeNotes} 
             updateNote={updateNote} 
             archiveNote={archiveNote}
+            deleteNote={deleteNote}
             />
       </section>);
 };
