@@ -5,7 +5,7 @@ import { INote, NoteActionTypes } from '../types.js';
 
 type ArchiveNoteProps = {
     note: INote,
-    archiveNote: (id:number) => NoteActionTypes,
+    archiveNote: (id:string) => NoteActionTypes,
 }
 
 export const ArchiveNote = ({ note, archiveNote }: ArchiveNoteProps) => {

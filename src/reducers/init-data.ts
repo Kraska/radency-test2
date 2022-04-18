@@ -26,7 +26,7 @@ export const CATEGORIES:Record<string, ICategory> = {
 
 export const NOTES: INote[] = [
     {
-      id: 1,
+      id: '1',
       title: 'Shopping list',
       created: new Date(),
       category: CATEGORIES['1'],
@@ -34,7 +34,7 @@ export const NOTES: INote[] = [
       isActive: true,
     },
     {
-      id: 2,
+      id: '2',
       title: 'The theory of evolution',
       created: new Date(),
       category: CATEGORIES['2'],
@@ -42,7 +42,7 @@ export const NOTES: INote[] = [
       isActive: true,
     },
     {
-      id: 3,
+      id: '3',
       title: 'Books list',
       created: new Date(),
       category: CATEGORIES['3'],
@@ -50,7 +50,7 @@ export const NOTES: INote[] = [
       isActive: true,
     },
     {
-      id: 4,
+      id: '4',
       title: 'New Future',
       created: new Date(),
       category: CATEGORIES['3'],
@@ -58,7 +58,7 @@ export const NOTES: INote[] = [
       isActive: true,
     },
     {
-      id: 5,
+      id: '5',
       title: 'Some Task',
       created: new Date(),
       category: CATEGORIES['1'],

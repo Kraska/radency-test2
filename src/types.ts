@@ -4,7 +4,7 @@ import { ADD_NOTE, ARCHIVE_NOTE, UPDATE_NOTE, DELETE_NOTE, UPDATE_CATEGORY } fro
 // Store
 
 export interface INote {
-    id: number,
+    id: string,
     title: string,
     created: Date,
     category: ICategory,
@@ -25,10 +25,20 @@ export interface ICategory {
 
 // Actions
 
+interface IAddNoteAction {
+    type: typeof ADD_NOTE,
+    payload: {
+        title: string,
+        category: ICategory,
+        content: string,
+        date?: Date,
+    },
+}
+
 interface IUpdateNoteAction {
     type: typeof UPDATE_NOTE,
     payload: {
-        id: number,
+        id: string,
         title: string,
         category: ICategory,
         content: string,
@@ -41,18 +51,18 @@ interface IUpdateNoteAction {
 interface IArchiveNoteAction {
     type: typeof ARCHIVE_NOTE,
     payload: {
-        id: number,
+        id: string,
     },
 }
 
 interface IDeleteNoteAction {
     type: typeof DELETE_NOTE,
     payload: {
-        id: number,
+        id: string,
     },
 }
 
-export type NoteActionTypes = IUpdateNoteAction | IArchiveNoteAction | IDeleteNoteAction;
+export type NoteActionTypes = IAddNoteAction | IUpdateNoteAction | IArchiveNoteAction | IDeleteNoteAction;
 
 
 

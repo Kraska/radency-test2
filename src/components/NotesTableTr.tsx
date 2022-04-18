@@ -8,8 +8,8 @@ type NoteTableTrProps = {
     note: INote,
     categories: Record<string, ICategory>,
     updateNote: (note:INote) => NoteActionTypes,
-    archiveNote: (id:number) => NoteActionTypes,
-    deleteNote: (id:number) => NoteActionTypes,
+    archiveNote: (id:string) => NoteActionTypes,
+    deleteNote: (id:string) => NoteActionTypes,
 }
 
 export const NotesTableTr = ({ note, categories, updateNote, archiveNote, deleteNote }: NoteTableTrProps) => {

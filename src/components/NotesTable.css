@@ -25,5 +25,15 @@
 }
 
 .TableList tbody td i {
-    color: grey
+    color: grey;
+}
+
+button.btn {
+    background-color: #999999;
+    color: white;
+    font-weight: bold;
+}
+
+button.btn:hover {
+    color: white;
 }
