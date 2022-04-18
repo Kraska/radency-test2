@@ -6,8 +6,20 @@ import { ADD_NOTE, ARCHIVE_NOTE, UPDATE_NOTE, DELETE_NOTE } from "./constants";
 export interface INote {
     id: number,
     title: string,
+    created: Date,
+    category: ICategory,
     content: string,
     isActive: boolean,
+    date?: Date,
+    dates?: string
+}
+
+export interface ICategory {
+    id: number,
+    title: string,
+    iconName: string,
+    activeNotes: number,
+    archivedNotes: number,
 }
 
 
@@ -18,8 +30,11 @@ interface IUpdateNoteAction {
     payload: {
         id: number,
         title: string,
+        category: ICategory,
         content: string,
         isActive: boolean,
+        date?: Date,
+        dates?: string
     },
 }
 
