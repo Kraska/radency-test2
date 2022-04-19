@@ -1,9 +1,9 @@
 import { ArchiveNote } from './ArchiveNote';
 import { EditNote } from './EditNote';
-import { INote, ICategory, NoteActionTypes, SummaryActionTypes, StateType } from '../types.js';
+import { INote, ICategory, NoteActionTypes, StateType } from '../types.js';
 import { DeleteNote } from './DeleteNote';
 import { connect } from 'react-redux';
-import { updateSummary, updateNote, archiveNote, deleteNote } from '../actions/actionCreator';
+import { updateNote, archiveNote, deleteNote } from '../actions/actionCreator';
 
 type NoteTableTrProps = {
     note: INote,
@@ -23,7 +23,9 @@ const NotesTableTr = ({
 
     const { title, created, category, content, dates } = note;
     return (<tr>
-        <th></th>
+        <th className="icon-coll">
+            <i className={"bi " + category.iconName}></i>
+        </th>
         <th>{title}</th>
         <td>{created.toLocaleString()}</td>
         <td>{category.title}</td>

@@ -21,9 +21,11 @@ const SummaryTable = ({ categories }: CategoriesTableProps) => {
                     </tr>
                 </thead>
                 <tbody>
-                {Object.values(categories).map(({id, title, activeNotes, archivedNotes}) => (
+                {Object.values(categories).map(({id, title, iconName, activeNotes, archivedNotes}) => (
                     <tr key={id}>
-                        <th></th>
+                        <th className="icon-coll">
+                            <i className={"bi " + iconName}></i>
+                        </th>
                         <th>{title}</th>
                         <td>{activeNotes}</td>
                         <td>{archivedNotes}</td>
