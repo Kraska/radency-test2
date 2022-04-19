@@ -1,7 +1,10 @@
-import { NotesTableTr } from './NotesTableTr';
+import NotesTableTr  from './NotesTableTr';
 import { Table } from 'react-bootstrap';
-import { INote, ICategory, NoteActionTypes } from '../types.js';
+import { INote, ICategory, NoteActionTypes, StateType, SummaryActionTypes } from '../types.js';
 import { AddNote } from './AddNote';
+import { connect } from 'react-redux';
+import { addNote, updateSummary } from '../actions/actionCreator';
+import { useEffect } from 'react';
 
 
 type NoteTableProps = {
@@ -13,19 +16,17 @@ type NoteTableProps = {
         content:string, 
         date?:Date
     ) => NoteActionTypes,
-    updateNote: (note:INote) => NoteActionTypes,
-    archiveNote: (id:string) => NoteActionTypes,
-    deleteNote: (id:string) => NoteActionTypes,
+    updateSummary: (notes:INote[]) => SummaryActionTypes,
 }
 
-export const NotesTable = ({ 
-    notes, 
-    categories, 
-    addNote, 
-    updateNote, 
-    archiveNote, 
-    deleteNote 
-}: NoteTableProps) => {
+
+const NotesTable = ({ notes, categories, addNote, updateSummary}: NoteTableProps) => {
+
+    const activeNotes = notes.filter(({isActive}) => isActive);
+
+    useEffect(() => {
+        updateSummary(notes);
+    }, [notes]);
 
     return (
         <div className="TableList container">
@@ -44,18 +45,15 @@ export const NotesTable = ({
                 </tr>
             </thead>
             <tbody>
-            {notes.map((note) => (
-                <NotesTableTr 
-                    key={note.id} 
-                    note={note} 
-                    categories={categories}
-                    updateNote={updateNote} 
-                    archiveNote={archiveNote} 
-                    deleteNote={deleteNote} 
-                    />))}
+            {activeNotes.map((note) => (<NotesTableTr key={note.id} note={note} />))}
             </tbody>
-        </Table>
+        </Table>    
         <AddNote categories={categories} addNote={addNote} />
         </div>
     );       
 }
+
+export default connect((state: StateType) => ({
+    notes: state.notes,
+    categories: state.categories,
+  }), { addNote, updateSummary })(NotesTable);

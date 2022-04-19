@@ -1,16 +1,25 @@
+import { updateSummary } from "../actions/actionCreator";
 import { ADD_NOTE, ARCHIVE_NOTE, DELETE_NOTE, UPDATE_NOTE } from "../constants";
-import { INote, NoteActionTypes } from "../types";
+import { ICategory, INote, NoteActionTypes } from "../types";
 import { NOTES, CATEGORIES } from "./init-data";
 
 type stateNotes = INote[];
 
 const initialState:stateNotes = NOTES;
 
+const EMPTY_CATEGORY:ICategory = {
+  id: '0',
+  title: '',
+  iconName: '',
+  activeNotes: 0,
+  archivedNotes: 0,
+};
+
 const EMPTY_NOTE:INote = {      
   id: '0',
   title: '',
   created: new Date(),
-  category: CATEGORIES['1'],
+  category: EMPTY_CATEGORY,
   content: '',
   isActive: false,
 };
@@ -23,7 +32,6 @@ const notes = (state = initialState, action:NoteActionTypes ): stateNotes => {
   switch (type) {
     
     case ADD_NOTE : {
-
 
       const note:INote = {
         id: (Math.random() + 1).toString(36).substring(7), 
@@ -55,7 +63,9 @@ const notes = (state = initialState, action:NoteActionTypes ): stateNotes => {
 
     case ARCHIVE_NOTE : {
       const { id } = payload;
-      return state.map(note => note.id === id ? {...note, isActive: false} : note);
+      const newState = state.map(note => note.id === id ? {...note, isActive: false} : note);
+      
+      return newState;
     }
 
     case DELETE_NOTE : {

@@ -1,14 +1,13 @@
 import { Table } from 'react-bootstrap';
-import { ICategory } from '../types.js';
+import { connect } from 'react-redux';
+import { ICategory, StateType } from '../types.js';
 
 
 type CategoriesTableProps = {
     categories: Record<string, ICategory>,
 }
 
-export const SummaryTable = ({ 
-    categories, 
-}: CategoriesTableProps) => {
+const SummaryTable = ({ categories }: CategoriesTableProps) => {
 
     return (
         <div className="TableList container Summary ">
@@ -35,3 +34,7 @@ export const SummaryTable = ({
         </div>
     );       
 }
+
+export default connect((state: StateType) => ({
+    categories: state.categories,
+  }))(SummaryTable);

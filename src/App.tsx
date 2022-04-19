@@ -1,10 +1,14 @@
 import './App.css';
-import Content from './layout/Content';
+import NotesTable from './components/NotesTable';
+import SummaryTable from './components/SummaryTable';
 
 function App() {
   return (
     <div className="App">
-      <Content />
+        <section>
+            <NotesTable />
+            <SummaryTable />
+        </section>
     </div>
   );
 }

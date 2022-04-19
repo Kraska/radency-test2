@@ -1,8 +1,9 @@
 import { ArchiveNote } from './ArchiveNote';
 import { EditNote } from './EditNote';
-import { INote, ICategory, NoteActionTypes } from '../types.js';
+import { INote, ICategory, NoteActionTypes, SummaryActionTypes, StateType } from '../types.js';
 import { DeleteNote } from './DeleteNote';
-
+import { connect } from 'react-redux';
+import { updateSummary, updateNote, archiveNote, deleteNote } from '../actions/actionCreator';
 
 type NoteTableTrProps = {
     note: INote,
@@ -12,7 +13,14 @@ type NoteTableTrProps = {
     deleteNote: (id:string) => NoteActionTypes,
 }
 
-export const NotesTableTr = ({ note, categories, updateNote, archiveNote, deleteNote }: NoteTableTrProps) => {
+const NotesTableTr = ({ 
+        note, 
+        categories, 
+        updateNote, 
+        archiveNote, 
+        deleteNote
+    }: NoteTableTrProps) => {
+
     const { title, created, category, content, dates } = note;
     return (<tr>
         <th></th>
@@ -29,7 +37,11 @@ export const NotesTableTr = ({ note, categories, updateNote, archiveNote, delete
         </td>
         <td>
             <DeleteNote note={note} deleteNote={deleteNote} />
-            {/* // <i className="bi bi-trash-fill"></i> */}
         </td>
     </tr>);
 }
+
+export default connect((state: StateType, ownProps: {note: INote}) => ({
+    note: ownProps.note,
+    categories: state.categories,
+  }), { updateNote, archiveNote, deleteNote })(NotesTableTr);

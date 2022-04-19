@@ -1,58 +1,35 @@
-import { UPDATE_CATEGORY } from "../constants";
-import { ICategory, CategoryActionTypes } from "../types";
+import { createDocumentRegistry } from "typescript";
+import { UPDATE_SUMMARY } from "../constants";
+import { ICategory, SummaryActionTypes } from "../types";
+import { CATEGORIES } from "./init-data";
 
 type StateCategories = Record<string, ICategory>;
 
-const CATEGORIES:StateCategories = {
-  '1': {
-    id: '1',
-    title: 'Task',
-    iconName: 'bi-card-list',
-    activeNotes: 3,
-    archivedNotes: 0,
-  },
-  '2': {
-    id: '2',
-    title: 'Random Thought',
-    iconName: 'bi-shuffle',
-    activeNotes: 1,
-    archivedNotes: 0,
-  },
-  '3': {
-    id: '3',
-    title: 'Idea',
-    iconName: 'bi-lightbulb',
-    activeNotes: 1,
-    archivedNotes: 0,
-  },
-}; 
 
-
-const initialState:StateCategories = CATEGORIES;
-
-
-const categories = (state = initialState, action:CategoryActionTypes ): StateCategories => {
+const categories = (state = CATEGORIES, action:SummaryActionTypes ): StateCategories => {
 
   const { type, payload } = action;
-  //console.log('payload', payload);
+
   switch (type) {
     
-      case UPDATE_CATEGORY : {
+      case UPDATE_SUMMARY : {
 
-        // const oldNote:INote = state.find(({ id }) => id === payload.id) || EMPTY_NOTE;
+        const { notes } = payload;
 
-        // const note:INote = {
-        //   id: payload.id, 
-        //   title: payload.title, 
-        //   created: oldNote.created,
-        //   category: payload.category,
-        //   content: payload.content, 
-        //   isActive: payload.isActive,
-        // };
+        const newState:StateCategories = Object.values(state)
+            .map(cat => ({...cat, activeNotes: 0, archivedNotes: 0}))
+            .reduce((accumulator, cat) => ({...accumulator, [cat.id]: cat}), {})
 
-        // return state.map(item => item.id === payload.id ? note : item);
+        notes.forEach(({category, isActive}) => {
+          if(isActive) {
+            newState[category.id].activeNotes++;
+          } else {
+            newState[category.id].archivedNotes++;
+          }
+        })
 
-        return state;
+        //console.log('newState', newState);
+        return newState;
       }
     
       default:

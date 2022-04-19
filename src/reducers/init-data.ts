@@ -5,7 +5,7 @@ export const CATEGORIES:Record<string, ICategory> = {
       id: '1',
       title: 'Task',
       iconName: 'bi-card-list',
-      activeNotes: 3,
+      activeNotes: 2,
       archivedNotes: 0,
     },
     '2': {
@@ -19,7 +19,7 @@ export const CATEGORIES:Record<string, ICategory> = {
       id: '3',
       title: 'Idea',
       iconName: 'bi-lightbulb',
-      activeNotes: 1,
+      activeNotes: 2,
       archivedNotes: 0,
     },
 }; 

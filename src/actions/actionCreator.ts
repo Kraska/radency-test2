@@ -1,5 +1,5 @@
-import { ADD_NOTE, ARCHIVE_NOTE, DELETE_NOTE, UPDATE_NOTE, UPDATE_CATEGORY } from '../constants';
-import { NoteActionTypes, INote, CategoryActionTypes, ICategory } from '../types';
+import { ADD_NOTE, ARCHIVE_NOTE, DELETE_NOTE, UPDATE_NOTE, UPDATE_SUMMARY } from '../constants';
+import { NoteActionTypes, INote, SummaryActionTypes, ICategory } from '../types';
 
 
 export const addNote = (
@@ -29,7 +29,7 @@ export const deleteNote = (id:string): NoteActionTypes => ({
 
 
 
-export const updateCategory = (category:ICategory): CategoryActionTypes => ({
-    type: UPDATE_CATEGORY, 
-    payload: {...category}
+export const updateSummary = (notes:INote[]): SummaryActionTypes => ({
+    type: UPDATE_SUMMARY, 
+    payload: {notes}
 });
