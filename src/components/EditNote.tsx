@@ -35,7 +35,7 @@ export const EditNote = ({ note, categories, updateNote }: ArchiveNoteProps) => 
             setContent(value);
         }
 
-        const [date, setDate] = useState<moment.Moment | null>(moment());
+        const [date, setDate] = useState<moment.Moment | null>(moment(note.date));
         const handleDateChange = (date: moment.Moment | null) => {
             setDate(date);
         }
