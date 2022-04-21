@@ -31,6 +31,8 @@ export const NOTES: INote[] = [
       created: new Date(),
       category: CATEGORIES['1'],
       content: 'Tomatoes, bread, ...',
+      date: null,
+      dates: '',
       isActive: true,
     },
     {
@@ -39,6 +41,8 @@ export const NOTES: INote[] = [
       created: new Date(),
       category: CATEGORIES['2'],
       content: '',
+      date: null,
+      dates: '',
       isActive: true,
     },
     {
@@ -47,7 +51,9 @@ export const NOTES: INote[] = [
       created: new Date(),
       category: CATEGORIES['3'],
       content: '',
-      isActive: true,
+      date: null,
+      dates: '',
+     isActive: true,
     },
     {
       id: '4',
@@ -55,7 +61,9 @@ export const NOTES: INote[] = [
       created: new Date(),
       category: CATEGORIES['3'],
       content: '',
-      isActive: true,
+      date: null,
+      dates: '',
+     isActive: true,
     },
     {
       id: '5',
@@ -63,6 +71,8 @@ export const NOTES: INote[] = [
       created: new Date(),
       category: CATEGORIES['1'],
       content: 'some content',
+      date: null,
+      dates: '',
       isActive: true,
     },
 ];

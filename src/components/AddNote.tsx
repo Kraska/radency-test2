@@ -12,7 +12,7 @@ type AddNoteProps = {
         title:string, 
         category:ICategory, 
         content:string, 
-        date?:Date
+        date:Date | null,
     ) => NoteActionTypes,
 }
 
@@ -49,7 +49,7 @@ export const AddNote = ({ categories, addNote }: AddNoteProps) => {
         }
 
         const handleSave = () => {
-            addNote(title, categories[categoryId], content);
+            addNote(title, categories[categoryId], content, null);
             handleClose();
             setTitle('');
             setCategoryId(initCategoryId);

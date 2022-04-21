@@ -21,6 +21,8 @@ const EMPTY_NOTE:INote = {
   created: new Date(),
   category: EMPTY_CATEGORY,
   content: '',
+  date: null,
+  dates: '',
   isActive: false,
 };
 
@@ -39,6 +41,8 @@ const notes = (state = initialState, action:NoteActionTypes ): stateNotes => {
         created: new Date(),
         category: payload.category,
         content: payload.content, 
+        date: payload.date,
+        dates: '',
         isActive: true,
       };
 
@@ -49,12 +53,20 @@ const notes = (state = initialState, action:NoteActionTypes ): stateNotes => {
 
         const oldNote:INote = state.find(({ id }) => id === payload.id) || EMPTY_NOTE;
 
+        let dates = oldNote.dates;
+        if (oldNote.date != payload.date && payload.date) {
+          dates = (dates !== '') ? `${dates}, ` : '';
+          dates = dates + payload.date.toLocaleDateString('en-us'); 
+        }
+
         const note:INote = {
           id: payload.id, 
           title: payload.title, 
           created: oldNote.created,
           category: payload.category,
           content: payload.content, 
+          date: payload.date,
+          dates: dates,
           isActive: payload.isActive,
         };
 

@@ -35,7 +35,7 @@ export const EditNote = ({ note, categories, updateNote }: ArchiveNoteProps) => 
             setContent(value);
         }
 
-        const [date, setDate] = useState<moment.Moment | null>(moment(note.date));
+        const [date, setDate] = useState<moment.Moment | null>(moment(note.date || new Date()));
         const handleDateChange = (date: moment.Moment | null) => {
             setDate(date);
         }
@@ -61,7 +61,7 @@ export const EditNote = ({ note, categories, updateNote }: ArchiveNoteProps) => 
                 handleSave();
             }
         }
-
+// console.log('date', date);
         return (
         <>
             <div onClick={handleShow}>
