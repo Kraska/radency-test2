@@ -22,12 +22,18 @@ const NotesTableTr = ({
     }: NoteTableTrProps) => {
 
     const { title, created, category, content, dates } = note;
+
+    const createdStr = created.toLocaleDateString(
+        'en-us', 
+        { day:"numeric", year:"numeric", month:"short"}
+    );
+
     return (<tr>
         <th className="icon-coll">
             <i className={"bi " + category.iconName}></i>
         </th>
         <th>{title}</th>
-        <td>{created.toLocaleString()}</td>
+        <td>{createdStr}</td>
         <td>{category.title}</td>
         <td>{content}</td>
         <td>{dates}</td>

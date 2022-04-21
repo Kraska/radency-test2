@@ -6,7 +6,7 @@ export const addNote = (
         title:string, 
         category:ICategory, 
         content:string, 
-        date?:Date
+        date?: Date | null
     ): NoteActionTypes => ({
     type: ADD_NOTE, 
     payload: {title, category, content, date}

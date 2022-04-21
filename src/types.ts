@@ -10,7 +10,7 @@ export interface INote {
     category: ICategory,
     content: string,
     isActive: boolean,
-    date?: Date,
+    date?: Date | null,
     dates?: string
 }
 
@@ -36,7 +36,7 @@ interface IAddNoteAction {
         title: string,
         category: ICategory,
         content: string,
-        date?: Date,
+        date?: Date | null,
     },
 }
 
@@ -48,7 +48,7 @@ interface IUpdateNoteAction {
         category: ICategory,
         content: string,
         isActive: boolean,
-        date?: Date,
+        date?: Date | null,
         dates?: string
     },
 }
