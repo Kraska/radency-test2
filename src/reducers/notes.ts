@@ -1,7 +1,6 @@
-import { updateSummary } from "../actions/actionCreator";
 import { ADD_NOTE, ARCHIVE_NOTE, DELETE_NOTE, UPDATE_NOTE } from "../constants";
 import { ICategory, INote, NoteActionTypes } from "../types";
-import { NOTES, CATEGORIES } from "./init-data";
+import { NOTES } from "./init-data";
 
 type stateNotes = INote[];
 
@@ -54,7 +53,7 @@ const notes = (state = initialState, action:NoteActionTypes ): stateNotes => {
         const oldNote:INote = state.find(({ id }) => id === payload.id) || EMPTY_NOTE;
 
         let dates = oldNote.dates;
-        if (oldNote.date != payload.date && payload.date) {
+        if (oldNote.date !== payload.date && payload.date) {
           dates = (dates !== '') ? `${dates}, ` : '';
           dates = dates + payload.date.toLocaleDateString('en-us'); 
         }

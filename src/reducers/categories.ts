@@ -1,4 +1,3 @@
-import { createDocumentRegistry } from "typescript";
 import { UPDATE_SUMMARY } from "../constants";
 import { ICategory, SummaryActionTypes } from "../types";
 import { CATEGORIES } from "./init-data";
