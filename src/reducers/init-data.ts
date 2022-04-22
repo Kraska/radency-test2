@@ -32,7 +32,7 @@ export const NOTES: INote[] = [
       category: CATEGORIES['1'],
       content: 'Tomatoes, bread, ...',
       date: null,
-      dates: '',
+      dates: [],
       isActive: true,
     },
     {
@@ -42,7 +42,7 @@ export const NOTES: INote[] = [
       category: CATEGORIES['2'],
       content: '',
       date: null,
-      dates: '',
+      dates: [],
       isActive: true,
     },
     {
@@ -52,7 +52,7 @@ export const NOTES: INote[] = [
       category: CATEGORIES['3'],
       content: '',
       date: null,
-      dates: '',
+      dates: [],
      isActive: true,
     },
     {
@@ -62,7 +62,7 @@ export const NOTES: INote[] = [
       category: CATEGORIES['3'],
       content: '',
       date: null,
-      dates: '',
+      dates: [],
      isActive: true,
     },
     {
@@ -72,7 +72,7 @@ export const NOTES: INote[] = [
       category: CATEGORIES['1'],
       content: 'some content',
       date: null,
-      dates: '',
+      dates: [],
       isActive: true,
     },
 ];

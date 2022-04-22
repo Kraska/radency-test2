@@ -21,7 +21,7 @@ const EMPTY_NOTE:INote = {
   category: EMPTY_CATEGORY,
   content: '',
   date: null,
-  dates: '',
+  dates: [],
   isActive: false,
 };
 
@@ -41,10 +41,10 @@ const notes = (state = initialState, action:NoteActionTypes ): stateNotes => {
         category: payload.category,
         content: payload.content, 
         date: payload.date,
-        dates: '',
+        dates: payload.date ? [payload.date] : [],
         isActive: true,
       };
-
+console.log('note', note);
       return [...state, note];
     }
 
@@ -52,10 +52,9 @@ const notes = (state = initialState, action:NoteActionTypes ): stateNotes => {
 
         const oldNote:INote = state.find(({ id }) => id === payload.id) || EMPTY_NOTE;
 
-        let dates = oldNote.dates;
-        if (oldNote.date !== payload.date && payload.date) {
-          dates = (dates !== '') ? `${dates}, ` : '';
-          dates = dates + payload.date.toLocaleDateString('en-us'); 
+        const dates = [...oldNote.dates];
+        if (payload.date && !isDatesEqual(payload.date, oldNote.date)) {
+            dates.push(payload.date);
         }
 
         const note:INote = {
@@ -88,5 +87,15 @@ const notes = (state = initialState, action:NoteActionTypes ): stateNotes => {
       return state;
   }
 }
+
+const isDatesEqual = (date1:Date|null, date2:Date|null): boolean => {
+  if (date1 === null)
+      return date2 === null ? true : false;
+
+  if (date2 === null)
+      return false;
+
+  return date1.toString() === date2.toString();    
+}
   
-  export default notes;
+export default notes;

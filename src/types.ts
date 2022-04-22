@@ -11,7 +11,7 @@ export interface INote {
     content: string,
     isActive: boolean,
     date: Date | null,
-    dates: string
+    dates: Date[]
 }
 
 export interface ICategory {

@@ -49,7 +49,7 @@ export const AddNote = ({ categories, addNote }: AddNoteProps) => {
         }
 
         const handleSave = () => {
-            addNote(title, categories[categoryId], content, null);
+            addNote(title, categories[categoryId], content, date ? date.toDate() : null);
             handleClose();
             setTitle('');
             setCategoryId(initCategoryId);

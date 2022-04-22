@@ -28,6 +28,12 @@ const NotesTableTr = ({
         { day:"numeric", year:"numeric", month:"short"}
     );
 
+    const datesStr = (dates: Date[]): string => {
+        return dates
+            .map(date => date.toLocaleDateString('en-us'))
+            .join(', ');
+    }
+
     return (<tr>
         <th className="icon-coll">
             <i className={"bi " + category.iconName}></i>
@@ -36,7 +42,7 @@ const NotesTableTr = ({
         <td>{createdStr}</td>
         <td>{category.title}</td>
         <td>{content}</td>
-        <td>{dates}</td>
+        <td>{datesStr(dates)}</td>
         <td>
             <EditNote note={note} categories={categories} updateNote={updateNote} />
         </td>
