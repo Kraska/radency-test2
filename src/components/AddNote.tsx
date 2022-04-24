@@ -1,9 +1,7 @@
-import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
+import { ChangeEvent, KeyboardEvent, useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { ICategory, NoteActionTypes } from '../types.js';
-import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
-import moment from 'moment';
 
 
 type AddNoteProps = {
@@ -12,7 +10,6 @@ type AddNoteProps = {
         title:string, 
         category:ICategory, 
         content:string, 
-        date:Date | null,
     ) => NoteActionTypes,
 }
 
@@ -39,22 +36,12 @@ export const AddNote = ({ categories, addNote }: AddNoteProps) => {
             setContent(value);
         }
 
-        const [date, setDate] = useState<moment.Moment | null>(moment());
-        const handleDateChange = (date: moment.Moment | null) => {
-            setDate(date);
-        }
-        const [dateFocused, setDateFocused] = useState<boolean>(false);
-        const handleDateFocused = ({ focused }: { focused:boolean }) => {
-            setDateFocused(focused);
-        }
-
         const handleSave = () => {
-            addNote(title, categories[categoryId], content, date ? date.toDate() : null);
+            addNote(title, categories[categoryId], content);
             handleClose();
             setTitle('');
             setCategoryId(initCategoryId);
             setContent('');
-            setDate(null);
         }
         
         const handleKeyPress = ({ code }: KeyboardEvent<HTMLInputElement>) => {
@@ -106,16 +93,7 @@ export const AddNote = ({ categories, addNote }: AddNoteProps) => {
                             onChange={handleContentChange}
                             rows={3} />
                     </Form.Group>
-                    <Form.Group className="mb-3">
-                        <div><Form.Label>Date</Form.Label></div>
-                        <SingleDatePicker 
-                            date={date}
-                            onDateChange={handleDateChange}
-                            focused={dateFocused}
-                            onFocusChange={handleDateFocused}
-                            id={`{note.id}_date`}
-                        />
-                    </Form.Group>
+
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>

@@ -20,7 +20,6 @@ const EMPTY_NOTE:INote = {
   created: new Date(),
   category: EMPTY_CATEGORY,
   content: '',
-  date: null,
   dates: [],
   isActive: false,
 };
@@ -29,7 +28,7 @@ const EMPTY_NOTE:INote = {
 const notes = (state = initialState, action:NoteActionTypes ): stateNotes => {
 
   const { type, payload } = action;
-  //console.log('payload', payload);
+  
   switch (type) {
     
     case ADD_NOTE : {
@@ -40,11 +39,10 @@ const notes = (state = initialState, action:NoteActionTypes ): stateNotes => {
         created: new Date(),
         category: payload.category,
         content: payload.content, 
-        date: payload.date,
-        dates: payload.date ? [payload.date] : [],
+        dates: [],
         isActive: true,
       };
-console.log('note', note);
+
       return [...state, note];
     }
 
@@ -52,19 +50,13 @@ console.log('note', note);
 
         const oldNote:INote = state.find(({ id }) => id === payload.id) || EMPTY_NOTE;
 
-        const dates = [...oldNote.dates];
-        if (payload.date && !isDatesEqual(payload.date, oldNote.date)) {
-            dates.push(payload.date);
-        }
-
         const note:INote = {
           id: payload.id, 
           title: payload.title, 
           created: oldNote.created,
           category: payload.category,
           content: payload.content, 
-          date: payload.date,
-          dates: dates,
+          dates: [],
           isActive: payload.isActive,
         };
 
@@ -86,16 +78,6 @@ console.log('note', note);
     default:
       return state;
   }
-}
-
-const isDatesEqual = (date1:Date|null, date2:Date|null): boolean => {
-  if (date1 === null)
-      return date2 === null ? true : false;
-
-  if (date2 === null)
-      return false;
-
-  return date1.toString() === date2.toString();    
 }
   
 export default notes;
