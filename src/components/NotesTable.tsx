@@ -14,7 +14,6 @@ type NoteTableProps = {
         title:string, 
         category:ICategory, 
         content:string, 
-        date:Date | null,
     ) => NoteActionTypes,
     updateSummary: (notes:INote[]) => SummaryActionTypes,
 }

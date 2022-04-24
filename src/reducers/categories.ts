@@ -27,7 +27,6 @@ const categories = (state = CATEGORIES, action:SummaryActionTypes ): StateCatego
           }
         })
 
-        //console.log('newState', newState);
         return newState;
       }
     
