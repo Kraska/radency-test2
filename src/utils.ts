@@ -8,8 +8,8 @@ export type ParsingRule = {
 
 const PARSING_RULES: ParsingRule[] = [
     {
-        regExp: new RegExp(/\d{2}\/\d{2}\/\d{2,4}/, 'g'),
-        dateFormats: ["DD/MM/YY", "DD/MM/YYYY"]
+        regExp: new RegExp(/\d{1,2}\/\d{1,2}\/\d{2,4}/, 'g'),
+        dateFormats: ["D/M/YY", "D/M/YYYY", "DD/MM/YY", "DD/MM/YYYY"]
     },
     {
         regExp: new RegExp(/\d{2}\.\d{2}\.\d{2,4}/, 'g'),

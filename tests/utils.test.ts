@@ -26,5 +26,9 @@ describe('testing utils.ts', () => {
         .toEqual(['22.01.2022', '23.01.22']);
   });
 
+  test('Check two dates: 3/5/2021, 5/5/2021', () => {
+    expect(extractDates('I’m gonna have a dentist appointment on the 3/5/2021, I moved it from 5/5/2021'))
+        .toEqual(['3/5/2021', '5/5/2021']);
+  });
 
 });

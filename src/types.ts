@@ -10,7 +10,7 @@ export interface INote {
     category: ICategory,
     content: string,
     isActive: boolean,
-    dates: Date[]
+    dates: string[]
 }
 
 export interface ICategory {

@@ -1,10 +1,9 @@
 import { ADD_NOTE, ARCHIVE_NOTE, DELETE_NOTE, UPDATE_NOTE } from "../constants";
 import { ICategory, INote, NoteActionTypes } from "../types";
+import { extractDates } from "../utils";
 import { NOTES } from "./init-data";
 
-type stateNotes = INote[];
 
-const initialState:stateNotes = NOTES;
 
 const EMPTY_CATEGORY:ICategory = {
   id: '0',
@@ -25,7 +24,12 @@ const EMPTY_NOTE:INote = {
 };
 
 
-const notes = (state = initialState, action:NoteActionTypes ): stateNotes => {
+const calculateDates = (note:INote): INote => ({...note, dates: extractDates(note.content)})
+
+const initialState:INote[] = NOTES.map(note => calculateDates(note));
+
+
+const notes = (state = initialState, action:NoteActionTypes ): INote[] => {
 
   const { type, payload } = action;
   
@@ -39,7 +43,7 @@ const notes = (state = initialState, action:NoteActionTypes ): stateNotes => {
         created: new Date(),
         category: payload.category,
         content: payload.content, 
-        dates: [],
+        dates: extractDates(payload.content),
         isActive: true,
       };
 
@@ -56,7 +60,7 @@ const notes = (state = initialState, action:NoteActionTypes ): stateNotes => {
           created: oldNote.created,
           category: payload.category,
           content: payload.content, 
-          dates: [],
+          dates: extractDates(payload.content),
           isActive: payload.isActive,
         };
 
