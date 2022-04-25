@@ -1,7 +1,6 @@
-import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
+import { ChangeEvent, KeyboardEvent, useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { ICategory, INote, NoteActionTypes } from '../types.js';
-import 'react-dates/lib/css/_datepicker.css';
 
 
 
