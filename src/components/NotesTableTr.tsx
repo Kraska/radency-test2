@@ -28,11 +28,6 @@ const NotesTableTr = ({
         { day:"numeric", year:"numeric", month:"short"}
     );
 
-    const datesStr = (dates: Date[]): string => {
-        return dates
-            .map(date => date.toLocaleDateString('en-us'))
-            .join(', ');
-    }
 
     return (<tr>
         <th className="icon-coll">

@@ -1,7 +1,6 @@
 import { ChangeEvent, KeyboardEvent, useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { ICategory, NoteActionTypes } from '../types.js';
-import 'react-dates/lib/css/_datepicker.css';
 
 
 type AddNoteProps = {
