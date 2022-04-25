@@ -57,7 +57,7 @@ export const NOTES: INote[] = [
       title: 'New Future',
       created: new Date(),
       category: CATEGORIES['3'],
-      content: '',
+      content: 'ekncke 20/07/2019 dedee 20/12/21 dnsedwj 21.01.2020 ',
       dates: [],
      isActive: true,
     },

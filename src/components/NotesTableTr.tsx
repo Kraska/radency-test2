@@ -42,7 +42,7 @@ const NotesTableTr = ({
         <td>{createdStr}</td>
         <td>{category.title}</td>
         <td>{content}</td>
-        <td>{datesStr(dates)}</td>
+        <td>{dates.join(', ')}</td>
         <td>
             <EditNote note={note} categories={categories} updateNote={updateNote} />
         </td>
