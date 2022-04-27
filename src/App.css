@@ -1,33 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+
+  .table-head {
+    @apply bg-brand text-white
+  }
+
+  .table-tr {
+    @apply bg-brand-light border-4 border-white text-text-light
+  }
+
+  .table-body-th {
+    @apply text-text font-normal
+  }
+
+  .table-icon {
+    @apply text-brand-dark pl-1 w-12
+  }
+
+  .table-i {
+    @apply text-brand-dark
+  }
+
+}
+
 div.container {
   margin-top: 20px;
 }
 
-.TableList thead th {
-  background-color: #999999;
-  color: white;
-}
-
-.TableList tbody tr {
-  background-color: #E8EAF4;
-  border-color: white;
-  border-width: 6px;
-  color: dimgray;
-}
-
-.TableList tbody th {
-  font-weight: normal;
-  color: #212529;
-}
-
-.TableList .icon-coll {
-  color: dimgray;
-  padding-left: 15px;
-  width: 50px;
-}
-
-.TableList tbody td i {
-  color: grey;
-}
 
 button.btn {
   background-color: #999999;

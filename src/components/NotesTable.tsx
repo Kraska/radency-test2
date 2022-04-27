@@ -30,7 +30,7 @@ const NotesTable = ({ notes, categories, addNote, updateSummary}: NoteTableProps
     return (
         <div className="TableList container">
         <Table hover>
-            <thead>
+            <thead className='table-head'>
                 <tr>
                     <th></th>
                     <th>Name</th>

@@ -29,22 +29,22 @@ const NotesTableTr = ({
     );
 
 
-    return (<tr>
-        <th className="icon-coll">
+    return (<tr className='table-tr'>
+        <th className="table-body-th icon-coll">
             <i className={"bi " + category.iconName}></i>
         </th>
-        <th>{title}</th>
+        <th className='table-body-th'>{title}</th>
         <td>{createdStr}</td>
         <td>{category.title}</td>
         <td>{content}</td>
         <td>{dates.join(', ')}</td>
-        <td>
+        <td className='table-icon'>
             <EditNote note={note} categories={categories} updateNote={updateNote} />
         </td>
-        <td>
+        <td className='table-icon'>
             <ArchiveNote note={note} archiveNote={archiveNote} />
         </td>
-        <td>
+        <td className='table-icon'>
             <DeleteNote note={note} deleteNote={deleteNote} />
         </td>
     </tr>);

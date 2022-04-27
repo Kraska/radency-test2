@@ -12,7 +12,7 @@ const SummaryTable = ({ categories }: CategoriesTableProps) => {
     return (
         <div className="TableList container Summary ">
             <Table hover>
-                <thead>
+                <thead className='table-head'>
                     <tr>
                         <th></th>
                         <th>Name</th>
@@ -22,11 +22,11 @@ const SummaryTable = ({ categories }: CategoriesTableProps) => {
                 </thead>
                 <tbody>
                 {Object.values(categories).map(({id, title, iconName, activeNotes, archivedNotes}) => (
-                    <tr key={id}>
-                        <th className="icon-coll">
+                    <tr key={id} className='table-tr'>
+                        <th className='table-body-th'>
                             <i className={"bi " + iconName}></i>
                         </th>
-                        <th>{title}</th>
+                        <th className='table-body-th'>{title}</th>
                         <td>{activeNotes}</td>
                         <td>{archivedNotes}</td>
                     </tr>
