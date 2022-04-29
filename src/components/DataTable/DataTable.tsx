@@ -2,7 +2,7 @@ import './DataTable.css';
 
 export type ColumnType<R> = {
     name: string,
-    selector: (row: R) => string,
+    selector: (row: R) => string | JSX.Element,
 };
 
 export type DataTableProps<R> = {
@@ -15,7 +15,7 @@ export const DataTable = ({ columns, data, keySelector }: DataTableProps<any>) =
     return (
     <table className="DataTable">
         <thead>
-            {columns.map(col => (<th>{col.name}</th>))}
+            {columns.map(col => (<th key={col.name}>{col.name}</th>))}
         </thead>
         <tbody>
             {data.map(row => (
